@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 import configs
-#import random
+import random
 import models
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
@@ -311,16 +311,6 @@ def notificacaoCount():
     ).count()
     print(notificacoes)
     return jsonify({"notificacoes": notificacoes}), 200
-
-@app.route('/notificacoes', methods=['GET'])
-def notificacoes():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
-    notificacoes = models.notificacao.query.filter(
-        models.notificacao.user_id == session['user_id']
-    ).all()
-    print(notificacoes)
-    return render_template('./perfil/notificacoes.html', notificacoes=notificacoes)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='0.0.0.0')
