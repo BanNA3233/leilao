@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotaki - Perfil do Usuário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/perfilC.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <div class="topbar">
+        <div class="shipping-lang">
+            <a href="/"><i class="fas fa-arrow-left"></i> Voltar</a>
+        </div>
+        <div>
+            <a href="#">Ajuda</a>
+        </div>
+    </div>
+
+    <div class="searchbar">
+        <div class="logo">Cota<span>ki</span></div>
+        <div class="user-info">
+            <h2>{{user.name}}</h2>
+            {%if user.verificado == "True" %}
+            <span class="status-usuario">Usuário Verificado <i class="fas fa-check-circle"></i></span>
+            {%endif%}
+        </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <main class="perfil-container">
+        <div class="perfil-grid">
+            <!-- Sidebar com informações do usuário -->
+            <aside class="perfil-sidebar">
+                <div class="perfil-profile">
+                    <img src="{{user.photo_path}}" alt="Foto do Usuário">
+                    <h3>Dados do Usuário</h3>
+                    <ul class="perfil-dados">
+                    <!-- Deixar mais informaçõs da empresa -->
+                        <li><i class="fa-solid fa-id-badge"></i> {{user.cpfcnpj}}</li>
+                        <li><i class="fa-solid fa-address-book"></i> {{user.address}} - {{user.city}} - {{user.state}}</li>
+                    <!--Campos Sociais da empresa -->
+                        <li><i class="fas fa-envelope"></i> {{user.email}}</li>
+                        <li><i class="fas fa-calendar"></i> Membro desde 2021</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Conteúdo principal -->
+            <section class="perfil-content">
+                <!-- Estatísticas -->
+                <div class="perfil-stats">
+                    <div class="stat-card">
+                        <h4>Cotações Participados</h4>
+                        <span>45</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Cotações Vencidos</h4>
+                        <span>12</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Avaliação</h4>
+                        <span>4.5 <i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+
+                <!-- Histórico de leilões -->
+                <div class="perfil-historico">
+                    <h3>Histórico de Cotações</h3>
+                    <div class="historico-grid">
+                        <div class="historico-card">
+                            <h4>Cotação: Computadores</h4>
+                            <p>Status: <span>Vencido</span></p>
+                            <p>Valor Final: <span>R$ 2.000,00</span></p>
+                        </div>
+                        <div class="historico-card">
+                            <h4>Leilão: Cadeiras</h4>
+                            <p>Status: <span>Participado</span></p>
+                            <p>Valor Final: <span>R$ 1.500,00</span></p>
+                        </div>
+                        <div class="historico-card">
+                            <h4>Leilão: Livros</h4>
+                            <p>Status: <span>Vencido</span></p>
+                            <p>Valor Final: <span>R$ 800,00</span></p>
+                        </div>
+                    </div>
+                    <a href="#">Ver mais...</a>
+                </div>
+                <!-- Aba de Comentários -->
+                <div class="perfil-comentarios mt-5">
+                    <h3 class="comentarios-titulo">Comentários sobre a Empresa</h3>
+                    <ul class="comentarios-lista">
+                        <li class="comentario-item">
+                            <strong class="comentario-autor">João Silva:</strong>
+                            <p class="comentario-texto">Excelente empresa, muito profissional!</p>
+                            <span class="comentario-data">Publicado em 10/10/2025</span>
+                        </li>
+                        <li class="comentario-item">
+                            <strong class="comentario-autor">Maria Oliveira:</strong>
+                            <p class="comentario-texto">Atendimento rápido e eficiente. Recomendo!</p>
+                            <span class="comentario-data">Publicado em 08/10/2025</span>
+                        </li>
+                        <li class="comentario-item">
+                            <strong class="comentario-autor">Carlos Pereira:</strong>
+                            <p class="comentario-texto">Produtos de qualidade, mas o prazo de entrega poderia ser melhor.</p>
+                            <span class="comentario-data">Publicado em 05/10/2025</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-ver-comentarios">Ver todos os comentários</a>
+                </div>
+            </section>
+        </div>
+    </main>
+<!-- Criar aba de Comentarios -->
+ 
+<!-- Comentarios para o fim da tela -->
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Cotaki. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

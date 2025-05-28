@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Perfil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <div class="container" >
+        <aside class="sidebar" style="position: fixed;">
+            <div class="profile">
+                <img src="/static/img/default.jpg" alt="Profile">
+                <p>{{user.empresa}}</p>
+            </div>
+            <nav>
+                <ul>
+                    {% include "/model/navforn.html" %}
+                    
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main">
+            <div class="topbar">
+                <a href="/" style="text-decoration: none;"><div class="logo"><i class="fa-solid fa-gavel"></i><h2>Cota<span>ki</span></h2></div></a>
+                <div class="user-area">
+                    <div class="notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span id="badge" class="badge"></span>
+                    </div>
+                    <div class="user-info">
+                        <span>{{user.name}}</span>
+                        <img src="/static/img/default.jpg" alt="Admin">
+                    </div>
+                </div>
+            </div>
+            {% block main %}
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="card-tittle"><h3><i class="fa-solid fa-magnifying-glass-chart"></i> Cotações <br> Participadas</h3></div>
+                    <div class="value">{{cotacoes}}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="card-tittle"><h3><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Propostas<br>Enviadas</h3></div>
+                     
+                    <div class="value">{{propostas}}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="card-tittle"><h3><i class="fa-solid fa-comments"></i> Comentários</h3></div>
+                    <div class="value">{{comentarios}}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="card-tittle"><h3><i class="fa-solid fa-star"></i></i> Avaliação</h3></div>
+                    <div class="value">{{media_nota}}</i></div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="congrats-card">
+                    <h2>Quadro de Avisos</h2>
+                    <p>Bem vindo ao <span style="color:#32d9e5;font-weight:bold;">Cota</span><span style="color:#0c42d6;font-weight:bold;">ki</span>, Agora você é um fornecedor conecte-se com seus novos clientes agora mesmo...</p>
+                    <div class="revenues">
+                        <div class="revenue">
+                            <div class="amount">$4800</div>
+                            <div>This Year</div>
+                        </div>
+                        <div class="revenue">
+                            <div class="amount">$2300</div>
+                            <div>Last Year</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overall-sales">
+                    <h3>Overall Sales</h3>
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock%}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/notificationBell.js"></script>
+</body>
+</html>

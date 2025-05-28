@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/leilao.css">
+    <link rel="stylesheet" href="../../static/css/home.css">
+    <script src="https://kit.fontawesome.com/8fdfd8f48b.js" crossorigin="anonymous"></script>
+    <title>Leilão</title>
+</head>
+<body>
+    <div class="topbar">
+    <div class="top-links">
+    {% if not "user_id" in session %}
+      <span>Olá! <a href="/login">Entre</a> ou <a href="/register">cadastre-se</a></span>
+      {%endif%}
+      <a class="textp" href="/cotacoes/lastday">cotações encerrando hoje</a>
+      <a class="textp" href="#">Ajuda e contato</a>
+    </div>
+    <div class="shipping-lang">
+      {% if "user_id" in session %}
+      <a id="openModalBtn" class="textp" href="#">Cotar</a>
+        {% if user.fornecedor == False %}
+            <a class="textp" href="/serFornecedor">Quero ser um fornecedor</a>
+        {%endif%}
+      {%endif%}
+      <a class="textp" href="/perfil/fornecedor/">Minha conta</a>
+    </div>
+  </div>
+    
+      <div class="searchbar">
+        <a style="text-decoration: none;" href="/"><div class="logo">Cota<span>ki</span></div></a>
+        <div class="search-input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Pesquise o que quiser" />
+          <div>
+          <select>
+            <option>Todas as categorias</option>
+          </select>
+          <button class="search-btn">Pesquisar</button>
+        </div>
+          
+        </div>
+      </div>
+      <!-- Fim do cabeçalho -->
+    <!-- inicio dos conteiners da pagina de produto-->
+     <div class="leilao-container">
+        <div class="leilao-header">
+            <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
+            {% if user.fornecedor == True%}
+            <div class="leilao-header-buttons">
+                <button id="openModalBtnEP" class="leilao-button">Enviar proposta</button>
+                <button class="leilao-button">Editar minha proposta</button>
+                <button class="leilao-button">Salvar</button>
+            </div>
+            {% elif user.id == cotacao.user_id%}
+            <div class="leilao-header-buttons">
+                <button class="leilao-button">Editar cotação</button>
+                <button class="leilao-button">Encerrar cotação</button>
+            </div>
+            {%endif%}
+        </div>
+        <div class="leilao-tittle-header">
+            <h1>{{cotacao.titulo}}</h1>
+        </div>
+        <div class="leilao-description">
+            <div>
+                <h3>Descrição</h3>
+                <p>Autor da cotação: <span>{{cotacao.user.name}}</span></p>
+                <p>Representando: <span>{{cotacao.user.empresa}}</span></p>
+                <p>Data de criação: <span>{{ cotacao.data.strftime('%d/%m/%Y') }}</span></p>
+                <p>Data de encerramento: <span>{{cotacao.dataFinal.strftime('%d/%m/%Y')}}</span></p>
+                <p>Local: <span>{{cotacao.user.city}} - {{cotacao.user.state}}</span></p>
+                <p>Descrição do produto: <span>{{cotacao.descricao}}</span></p>
+                <p>Quantidade Cotada: <span>{{cotacao.quantidade}}</span></p>
+                <p>Valor estimado: <span>R$ {{ '%.2f' % cotacao.valor_estimado }}</span></p>
+            </div>
+           <div>
+
+           </div> 
+        </div>
+        <div class="fornecedores">
+            <h3>Fornecedores interessados</h3>
+            <div class="fornecedores-list">
+                {% for proposta in propostas %}
+                <div class="fornecedor-item">
+                    <div class="fornecedor-info">
+                        <h4 class="fornecedor-name">Fornecedor 1</h4>
+                        <p>Nome: <span>Fornecedor 1</span></p>
+                        <p class="fornecedor-price">Valor: <span>R$ 1.200,00</span></p>
+                        <p>Data de resposta: <span>20/10/2023</span></p>
+                    </div>
+                    <div class="fornecedor-actions">
+                        <a class="fornecedor-button" href="#">Ver Fornecedor</a>
+                        <a class="fornecedor-button" href="#">Ver Proposta Anexada</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+     </div>
+
+
+<!--Modal Enviar Proposta-->
+<div id="ModalEnviaProposta" class="modal">
+  <div class="modal-content">
+    <h1>Enviar Proposta</h1>
+    <form action="/propostas/{{cotacao.id}}/adicionar" method="post">
+      <label for="valor">Valor:</label>
+      <input type="text" id="valor" name="valor" required>
+      <label for="anexar_produto">Anexar Produto:</label>
+      <select id="anexar_produto" name="anexar_produto">
+      <!--vai trazer os produtos com js-->
+
+      </select>
+      <p style="font-size:10px;margin-top:-10px;margin-bottom:15px;">Ainda não tem o produto para oferecer <a href="/perfil/fornecedor/produto">crie agora mesmo</a></p>
+      <label for="descricao">Descrição:</label>
+      <textarea id="descricao" name="descricao" required></textarea>
+      
+      <input type="hidden" name="cotacao_id" value="{{cotacao.id}}">
+      <button type="submit">Enviar Proposta</button>
+
+     <script src="/static/js/leilao.js"></script>
+        
+
+</body>
+</html>

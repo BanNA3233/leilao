@@ -1,0 +1,68 @@
+{% extends "/perfil/perfilFornecedor.html" %}
+
+{% block main %}
+<link rel="stylesheet" href="/static/css/fornecedorproduto.css">
+
+
+<div style="text-align: right; margin: 20px;">
+    <button id="openModal" class="btn-add"><i class="fa-solid fa-plus"></i> Adicionar Produto</button>
+</div>
+
+
+<div class="product-list">
+   {% for produto in produtos %}
+    <div class="product-card">
+        <img src="/{{produto.filePath}}/principal.jpg" alt="Produto">
+        <div class="product-info">
+            <div class="product-info1">
+            <h3>{{produto.titulo}}</h3>
+            <p>{{produto.descricao}}</p>
+            <small>Adicionado em: {{produto.data}}</small>
+            </div>
+            <div class="actions">
+                <button class="btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
+                <button class="btn-delete"><i class="fa-solid fa-trash"></i> Apagar</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span id="close-btn" class="close-btn">&times;</span>
+        <h2>Adicionar Produto</h2>
+        <form action="./cproduto" method="post" id="productForm" enctype="multipart/form-data">
+            <div class="form-group">
+            <label for="titulo">Título do Produto</label>
+            <input type="text" id="titulo" name="titulo" required>
+            </div>
+
+            <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+            <label for="fotoPrincipal">Foto Principal</label>
+            <input type="file" id="fotoPrincipal" name="foto_principal" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+            <label for="fotosAdicionais">Fotos Adicionais</label>
+            <div id="fotosAdicionaisContainer">
+                <input type="file" multiple name="fotos_adicionais" accept="image/*" class="extra-photo">
+            </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Cadastrar Produto</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="/static/js/fornecedorproduto.js"></script>
+{% endblock %}
+
+

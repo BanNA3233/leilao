@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eBay Clone</title>
+  <link rel="stylesheet" href="../../static/css/home.css" />
+</head>
+<body>
+  
+  <div class="topbar">
+    <div class="top-links">
+    {% if not "user_id" in session %}
+      <span>Olá! <a href="/login">Entre</a> ou <a href="/register">cadastre-se</a></span>
+      {%endif%}
+      <a class="textp" href="/cotacoes/lastday">cotações encerrando hoje</a>
+      <a class="textp" href="#">Ajuda e contato</a>
+    </div>
+    <div class="shipping-lang">
+      {% if "user_id" in session %}
+      <a id="openModalBtn" class="textp" href="#">Cotar</a>
+      <a class="textp" href="/serFornecedor">Quero ser um fornecedor</a>
+      {%endif%}
+      <a class="textp" href="/perfil/fornecedor/">Minha conta</a>
+    </div>
+  </div>
+
+  <div class="searchbar">
+    <a href="/" style="text-decoration:none;"><div class="logo">Cota<span>ki</span></div></a>
+    <div class="search-input">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Pesquise o que quiser" />
+      <div>
+      <select>
+        <option>Todas as categorias</option>
+      </select>
+      <button class="search-btn">Pesquisar</button>
+    </div>
+      
+    </div>
+  </div>
+  <div class="categories-container">
+  <nav class="categories">
+    <a href="#">Salvos</a>
+    <a href="#">Tecnologia</a>
+    <a href="#">Veículos</a>
+    <a href="#">Esportes</a>
+    <a href="#">Saúde e beleza</a>
+    <a href="#">Equipamentos industriais</a>
+  </nav>
+</div>
+<div>
+    <section class="promo-container slide1">
+        
+        <div class="promo-items">
+          <div class="promo-item">
+            <div class="promo-content">
+                <h1>Deixe que os fornecedores te procurem</h1>
+                <p>Simplifique sua busca pelo fornecedor ideal!</p>
+                <button>Peça uma cotação agora!</button>
+              </div>
+          </div>
+          <div class="promo-item">
+            
+          </div>
+          <div class="promo-item">
+          </div>
+        </div>
+        <div class="promo-controls">
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+          <div class="arrows">
+            <button id="prevBtn">&lt;</button>
+            <button id="nextBtn">&gt;</button>
+            <button id="pauseBtn">⏸</button>
+          </div>
+        </div>
+      </section>
+      <section class="help-section">
+        <div class="help-content">
+          <div>
+            <h2>Obtenha ajuda quando precisa</h2>
+            <p>De envios a devoluções, encontre todas as respostas.</p>
+          </div>
+          <button>Comece aqui</button>
+        </div>
+      </section>
+</div>
+
+<div class="cot-conteiner">
+    <div class="cot-tittle"><h1>Encontre seus futuros clientes!</h1></div>
+    <div class="cot-cards">
+      {%for cotacao in cotacoes %}
+        <div class="cot-card">
+            <div class="cot-card-img"><img src="{{cotacao.filePath}}" class="cot-card-img" alt="foto"></div>
+            <div class="cot-card-content">
+                <h2 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 250px; /* ajuste conforme necessário */display: block;">{{cotacao.titulo}}</h2>
+                <p>Comprador: <span>{{cotacao.nome}}</span></p>
+                <p>Fim da cotação:<span> {{ cotacao.dataFinal.strftime('%d/%m/%Y') }}</span></p>
+                <p>Tipo:<span> {{cotacao.tipo}}</span></p>
+                {% set ultimo = cotacao.lances|sort(attribute='data', reverse=True)|first %}
+                  <p>Ultimo lance:
+                    <span>
+                      {% if ultimo %}
+                        R$ {{ '%.2f' % ultimo.valor }}
+                      {% else %}
+                        Nenhum lance
+                      {% endif %}
+                    </span>
+                  </p>
+              <p>Categorias: <span> {{cotacao.categorias}}</span></p>
+                
+            </div>
+            <div>
+                <a class="btn-cot" href="/cotacoes/{{cotacao.id}}">Dar um lance</a>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+    <div class="cot-btn-ver">
+        <a class="btn-cot" href="#">Ver mais cotações...</a>
+    </div>
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+          <h4>Comprar</h4>
+          <ul>
+            <li><a href="#">Cadastro</a></li>
+            <li><a href="#">Ajuda para cotações e lances</a></li>
+            <li><a href="#">Fornecedores</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Ferramentas e aplicativos</h4>
+          <ul>
+            <li><a href="#">Desenvolvedores</a></li>
+            <li><a href="#">Central de Segurança</a></li>
+            <li><a href="#">Mapa do site</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Permanecer conectado</h4>
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+            <li><a href="#"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Sobre o Cotaki</h4>
+          <ul>
+            <li><a href="#">Informações da empresa</a></li>
+            <li><a href="#">Notícias</a></li>
+            <li><a href="#">Empregos</a></li>
+            <li><a href="#">Anuncie conosco</a></li>
+            <li><a href="#">Políticas</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Ajuda e contato</h4>
+          <ul>
+            <li><strong>Comunidade</strong></li>
+            <li><a href="#">Notícias</a></li>
+            <li><a href="#">Central de Respostas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2025 Cotaki. Todos os direitos reservados. 
+          <a href="#">Contrato do Usuário</a>, 
+          <a href="#">Privacidade</a>, 
+          <a href="#">Termos de Uso de Pagamentos</a>, 
+          <a href="#">Cookies</a> e 
+          <a href="#">AdChoice</a>
+        </p>
+      </div>
+</footer>
+<div class="floating-buttons">
+    <button id="toTopBtn" class="floating-btn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <a href="https://wa.me/your-number" target="_blank" class="floating-btn whatsapp-btn">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
+
+
+<!-- Modal de criação de cotação -->
+
+<!-- Modal para criar cotação -->
+<div id="modalCriarCotacao" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <h2>Criar Nova Cotação</h2>
+    <form action="/criarCotacao" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" required>
+      </div>
+
+      <div class="form-group">
+      <label for="descricao">Descrição:</label>
+      <textarea id="descricao" name="descricao" maxlength="300" required></textarea>
+      </div>
+
+      <div class="form-group">
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" name="tipo" required>
+        <option value="compra">Compra</option>
+        <option value="servico">Serviço</option>
+      </select>
+      </div>
+
+
+      <div class="form-group">
+      <label for="data_fim">Data de Encerramento:</label>
+      <input type="date" id="data_fim" name="data_fim" required>
+      </div>
+
+      <div class="form-group">
+      <label for="quantidade">Quantidade:</label>
+      <input type="text" id="quantidade" name="quantidade" required>
+      </div>
+
+
+      <div class="form-group">
+      <label for="valor_inicial">Valor Estimado:</label>
+      <input type="number" id="valor_inicial" name="valor" min="0" step="0.01" required>
+      </div>
+
+      <div class="form-group">
+        <label for="banner">Envie o banner da sua empresa ou cotação</label>
+        <input type="file" id="banner" name="banner" accept="image/*">
+      </div>
+
+
+      <div class="form-group">
+      <input class="envio" type="submit" value="Criar Cotação">
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.envio{
+  background-color: #0c42d6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  height: 100%;
+  padding: 30px 20px;
+  border-radius: 8px;
+  display: flex;
+  width: 90%;
+  max-width: 50%;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 20px; top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover { color: #007bff; }
+.modal-content label {
+  margin-top: 10px;
+  font-weight: 500;
+}
+.modal-content input, .modal-content textarea, .modal-content select {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+</style>
+
+<script>
+document.getElementById('openModalBtn').onclick = function() {
+  document.getElementById('modalCriarCotacao').style.display = 'flex';
+};
+document.getElementById('closeModal').onclick = function() {
+  document.getElementById('modalCriarCotacao').style.display = 'none';
+};
+window.onclick = function(event) {
+  if (event.target == document.getElementById('modalCriarCotacao')) {
+    document.getElementById('modalCriarCotacao').style.display = 'none';
+  }
+};
+</script>
+
+<!-- Fim do moal de criação de cotação -->
+
+<style>
+    .floating-buttons {
+        position: fixed;
+        text-decoration: none;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1000;
+    }
+
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .floating-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .whatsapp-btn {
+        background-color: #25d366;
+        text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+        background-color: #1da851;
+    }
+</style>
+
+<script>
+    const toTopBtn = document.getElementById('toTopBtn');
+
+    toTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+  <script src="https://kit.fontawesome.com/8fdfd8f48b.js" crossorigin="anonymous"></script>
+  <script src="../../static/js/home.js"></script>
+</body>
+</html>

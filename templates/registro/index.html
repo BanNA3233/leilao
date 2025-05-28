@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/registro.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="container-principal">
+        <div class="img-div"></div>
+        <div class="container-form">
+            <div class="card-form">
+                <div class="container-tittle">
+                    <h1>Criar conta</h1>
+                    <p>Já tem uma conta? <a href="/login">Entrar</a></p>
+                </div>
+                <div class="container-form">
+                <p>{{message}}</p>
+                    <form action="" method="post">
+                        <input type="text" name="name" placeholder="Digite seu Nome!" required>
+                        <input type="email" name="email" placeholder="Digite seu Email!" required>
+                        <input type="password" name="password" placeholder="Digite sua Senha!" required>
+                        <input id="submit" type="submit" value="Criar conta">
+                    </form>
+                </div>
+                <div>
+                    <p>ou</p>
+                </div>
+                <div class="container-social">
+                    <div class="container-social-item">
+                        <i class="fa-brands fa-google"></i>
+                        <a>Continuar com Google</a>
+                    </div>
+                    <div class="container-social-item">
+                        <i class="fa-brands fa-facebook"></i>
+                        <a>Continuar com Facebook</a>
+                    </div>
+                    <div class="container-social-item">
+                        <i class="fa-brands fa-apple"></i>
+                        <a>Continuar com AppleID</a>
+                    </div>
+                </div>
+                <div class="container-terms">
+                    <div>
+                        <i class="fa-solid fa-check"></i><p>Ao criar uma conta, você concorda com nossos <a href="">Termos de Serviço</a> e nossa <a href="">Política de Privacidade</a>.</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-check"></i><p>Você também concorda com o uso de cookies para melhorar sua experiência.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/8fdfd8f48b.js" crossorigin="anonymous"></script>   
+</body>
+</html>

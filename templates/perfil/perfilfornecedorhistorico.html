@@ -1,0 +1,85 @@
+{% extends "/perfil/perfilFornecedor.html" %}
+
+{% block main %}
+
+<link rel="stylesheet" href="/static/css/fonecedorhistorico.css">
+
+<div class="container-botoes">
+<button id="Hcotacao">Histórico de Cotações</button>
+<button id="Hparticipacao">Histórico de Participações</button>
+<button id="Hacesso">Histórico de Acesso</button>
+</div>
+
+<!--Area dos historicos-->
+
+<!-- Historico de Cotações -->
+<div id="HistoricoC" class="historico-cotacoes displayNone">
+    <h2>Historico de Cotações</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Comprador</th>
+                <th>Produto</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="linha-azul">
+                <td class="dado-azul">23/04/2025</td>
+                <td class="dado-azul">Click Internet</td>
+                <td class="dado-azul">Computadores</td>
+                <td class="dado-azul">R$ 30.000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Historico de Participações -->
+<div id="historicoP" class="historico-cotacoes displayNone">
+    <h2>Historico de Participações</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Comprador</th>
+                <th>Cotação</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="linha-azul">
+                <td class="dado-azul">23/04/2025</td>
+                <td class="dado-azul">Click Internet</td>
+                <td class="dado-azul">Computadores</td>
+                <td class="dado-azul"><button class="btn-contacaoAzul">Ver Cotação</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+    <!-- Historico de Acesso -->
+<div id="historicoA" class="historico-cotacoes displayNone">
+    <h2>Historico de Acesso</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data/Hora</th>
+                <th>Ação</th>
+                <th>Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for logs in user.logs %}
+            <tr class="linha-azul">
+                <td class="dado-azul">{{ logs.timestamp.strftime('%d/%m/%Y %H:%M') }}</td>
+                <td class="dado-azul">{{logs.action}}</td>
+                <td class="dado-azul">{{logs.details}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+<script src="/static/js/historico.js"></script>
+{% endblock %}

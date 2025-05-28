@@ -1,0 +1,271 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --primary: #32d9e5;
+    --second: #0c42d6;
+    
+}
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body {
+
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #e6f0fa;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 20vw;
+            background: #1565c0;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 35px 0;
+        }
+        .sidebar .profile {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .sidebar .profile img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            object-fit: cover;
+        }
+        .sidebar .profile p {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar nav ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 12px 32px;
+            border-left: 4px solid transparent;
+            transition: background 0.2s, border 0.2s;
+            font-size: 1em;
+        }
+        .sidebar nav ul li a.active,
+        .sidebar nav ul li a:hover {
+            background: #1976d2;
+            border-left: 4px solid #90caf9;
+        }
+        .sidebar nav ul li a i {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+        .main {
+            margin-left: 20vw;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .topbar {
+            background: #f0f7ff;
+            display: flex;
+            padding: 0% 24px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #bbdefb;
+        }
+        .topbar .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 1px 1px 1px rgb(0, 0, 0);
+            
+        }
+        span{
+                color: var(--second);
+            }
+        .topbar .logo i {
+            margin-right: 8px;
+            color: var(--second);
+        }
+        .topbar .user-area {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .topbar .user-area .notifications {
+            position: relative;
+            margin-right: 16px;
+        }
+        .topbar .user-area .notifications i {
+            font-size: 1.5em;
+            color: #1565c0;
+        }
+        .topbar .user-area .notifications .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #f00d0d;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.8em;
+        }
+        .topbar .user-area .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .topbar .user-area .user-info img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .topbar .user-area .user-info span {
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .stats {
+            display: flex;
+            gap: 24px;
+            margin: 24px 32px 0 32px;
+        }
+        .stat-card {
+            flex: 1;
+            background: #1976d2;
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(21,101,192,0.07);
+            .card-tittle{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50%;
+            }
+        }
+        .stat-card div h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .main-content {
+            display: flex;
+            gap: 24px;
+            margin: 24px 32px;
+        }
+        .congrats-card {
+            flex: 2;
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(21,101,192,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .congrats-card h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.3em;
+            color: #1565c0;
+        }
+        .congrats-card p {
+            margin: 0 0 16px 0;
+            color: #000000;
+        }
+        .congrats-card .revenues {
+            display: flex;
+            gap: 32px;
+            margin-top: 16px;
+        }
+        .congrats-card .revenues .revenue {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 16px 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .congrats-card .revenues .revenue .amount {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #1976d2;
+        }
+        .congrats-card .revenues .revenue:last-child .amount {
+            color: #1565c0;
+        }
+        .overall-sales {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(21,101,192,0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .overall-sales h3 {
+            margin: 0 0 16px 0;
+            font-size: 1.1em;
+            color: #1565c0;
+        }
+        .overall-sales canvas {
+            width: 100% !important;
+            max-width: 320px;
+            height: 180px !important;
+        }
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .overall-sales {
+                margin-top: 24px;
+            }
+        }
+        @media (max-width: 900px) {
+            .stats {
+                flex-direction: column;
+            }
+            .stat-card {
+                margin-bottom: 12px;
+            }
+        }
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                padding: 0;
+                height: auto;
+            }
+            .main {
+                padding: 0;
+            }
+            .main-content, .stats {
+                margin: 16px;
+            }
+        }

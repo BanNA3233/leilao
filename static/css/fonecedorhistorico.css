@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+  }
+
+.displayNone{
+    display: none;
+}
+
+.container-botoes {
+    display: flex;
+    justify-content: space-between;
+    margin: 3% 15%;
+    button{
+        padding: 10px 20px;
+        background-color: #0c42d6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        -webkit-text-stroke-width: 0.10px;
+        -webkit-text-stroke-color: #000000;
+    }
+    button:hover{
+        background-color: #ffff;
+        color: #0c42d6;
+        border: #0c42d6 1px solid;
+    }
+}
+
+
+
+.displayFlex{
+    display: flex;
+}
+
+.btn-contacaoAzul{
+    background-color: #0c42d6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    -webkit-text-stroke-width: 0.10px;
+    -webkit-text-stroke-color: #fff;
+}
+.historico-cotacoes {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+    table {
+    width: 98%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 5px 10px;
+    
+}
+}
+
+.historico-cotacoes th {
+    background: #1976d2;
+    color: #fff;
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+}
+
+.historico-cotacoes td {
+    padding: 10px 8px;
+    color: #1976d2;
+    font-family: 'Roboto', sans-serif;
+    background: #e3f0fc;
+    border-bottom: 1px solid #bbdefb;
+}
+
+.historico-cotacoes tr.linha-azul {
+    background: #bbfbbf;
+}
+
+.historico-cotacoes tr:last-child td {
+    border-bottom: none;
+}
+
+.historico-cotacoes .dado-azul {
+    font-weight: 500;
+}
+
+.historico-cotacoes h2 {
+    color: #1976d2;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/registro.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="container-principal">
+        <div class="img-div"></div>
+        <div class="container-form">
+            <div class="card-form">
+                <div class="container-tittle">
+                    <h1>Complete seu cadastro</h1>
+                </div>
+                <div class="container-form-in">
+                    <form action="/completarRegistro" method="post">
+                        <div class="form-line">
+                            <div class="form-group">
+                                <label for="tipo-E">Você é:</label>
+                                <select id="tipo-E" name="tipo-E" required>
+                                    <option value="F">Pessoa Fisica</option>
+                                    <option value="J">Pessoa Juridica</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cpf">CPF/CNPJ</label>
+                                <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF/CNPJ!" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <input type="text" id="estado" name="estado" placeholder="Digite seu Estado!" required>
+                            </div>
+                        </div>
+                        <div class="form-line">
+                            <div class="form-group">
+                                <label for="cep">CEP</label>
+                                <input type="text" id="cep" name="cep" placeholder="Digite seu CEP!" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="endereco">Endereço</label>
+                                <input type="text" id="endereco" name="endereco" placeholder="Digite seu Endereço!" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="text" id="telefone" name="telefone" placeholder="Digite sua Telefone!" required>
+                            </div>
+                        </div>
+                        <div class="form-line" id="tyne">
+                            <div class="form-group">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" name="bairro" placeholder="Digite seu Bairro!" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="numero">Numero</label>
+                                <input type="text" id="numero" name="numero" placeholder="Digite seu Numero!" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" name="cidade" placeholder="Digite sua Cidade!" required>
+                            </div>
+                            <!-- fazer campo complemento -->
+                            <!-- Fazer opção de whatsapp -->
+                            <!-- Fazez Campo Observação --> 
+                        </div>
+                        <div class="form-line">
+                            <div class="form-group">
+                                <input type="submit" id="submit" value="Completar Registro">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+</div>
+<script src="https://kit.fontawesome.com/8fdfd8f48b.js" crossorigin="anonymous"></script>   
+</body>
+</html>

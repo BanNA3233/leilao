@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Cotações</title>
+    <link rel="stylesheet" href="../../static/css/cotacoespage.css" />
+    <script src="https://kit.fontawesome.com/8fdfd8f48b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="cotacoes-tittle-header">
+      <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
+        <h1>Cotações {{made}}</h1>
+    </div>
+    <div class="container-cotacoes-all">
+        <div class="container-filtros">
+            <div class="container-filtros-header">
+                <h2>Filtros</h2>
+            </div>
+            <div class="container-filtros-body">
+                <form action="/cotacoes" method="get">
+                    <input type="text" name="search" placeholder="Pesquisar..." />
+                    <select name="status">
+                        <option value="">Status</option>
+                        <option value="Aprovada">Aprovada</option>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Rejeitada">Rejeitada</option>
+                    </select>
+                    <button type="submit">Filtrar</button>
+                </form>
+            </div>
+            <div class="container-filtros-footer">
+                <a href="/cotacoes">Limpar Filtros</a>
+        </div>
+        </div>
+        <div class="container-cotacoes">
+              <div class="cot-cards">
+      {%for cotacao in cotacoes %}
+        <div class="cot-card">
+            <div class="cot-card-img"><img src="../{{cotacao.filePath}}" class="cot-card-img" alt="foto"></div>
+            <div class="cot-card-content">
+                <h2 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 250px; /* ajuste conforme necessário */display: block;">{{cotacao.titulo}}</h2>
+                <p>Comprador: <span>{{cotacao.nome}}</span></p>
+                <p>Fim da cotação:<span> {{ cotacao.dataFinal.strftime('%d/%m/%Y') }}</span></p>
+                <p>Tipo:<span> {{cotacao.tipo}}</span></p>
+                {% set ultimo = cotacao.lances|sort(attribute='data', reverse=True)|first %}
+                  <p>Ultimo lance:
+                    <span>
+                      {% if ultimo %}
+                        R$ {{ '%.2f' % ultimo.valor }}
+                      {% else %}
+                        Nenhum lance
+                      {% endif %}
+                    </span>
+                  </p>
+              <p>Categorias: <span> {{cotacao.categorias}}</span></p>
+                
+            </div>
+            <div>
+                <a class="btn-cot" href="/cotacoes/{{cotacao.id}}">Dar um lance</a>
+            </div>
+        </div>
+        {% endfor %}
+      </div>  
+        </div>
+
+    </div>
+</body>
+</html>

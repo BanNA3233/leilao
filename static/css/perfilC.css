@@ -1,0 +1,156 @@
+/* Estilo geral */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Cabeçalho */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+}
+
+.topbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #32d9e5;
+    span{
+        color: #0c42d6;
+    }
+}
+
+.user-info h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.status-usuario {
+    color: #28a745;
+    font-size: 14px;
+}
+
+/* Layout principal */
+.perfil-container {
+    display: flex;
+    padding: 20px;
+}
+
+.perfil-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Sidebar */
+.perfil-sidebar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-profile img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.perfil-dados li {
+    list-style: none;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* Conteúdo principal */
+.perfil-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.stat-card h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.stat-card span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Histórico */
+.perfil-historico h3 {
+    margin-bottom: 15px;
+}
+
+.historico-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.historico-card {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.historico-card h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.historico-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    margin-top: 20px;
+}

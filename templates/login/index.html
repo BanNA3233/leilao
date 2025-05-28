@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/login.css">
+    <title>Login/Registro</title>
+</head>
+<body>
+<div class="container-principal">
+    <div class="container-tittle">
+        <h1>Entrar na conta</h1>
+        <p>Novo no Cotaki? <a href="">Criar conta</a></p>
+    </div>
+    <div class="container-form">
+    <p>{{menssage}}</p>
+        <form action="/login" method="post">
+            <input type="email" name="email" placeholder="Digite seu Email!" required>
+            <input type="password" name="password" placeholder="Digite sua Senha!" required>
+            <input id="submit" type="submit" value="Entrar">
+        </form>
+    </div>
+    <div>
+        
+        <p>ou</p>
+    </div>
+    <div class="container-social">
+        <div class="container-social-item">
+            <i class="fa-brands fa-google"></i>
+            <a>Continuar com Google</a>
+        </div>
+        <div class="container-social-item">
+            <i class="fa-brands fa-facebook"></i>
+            <a>Continuar com Facebook</a>
+        </div>
+        <div class="container-social-item">
+            <i class="fa-brands fa-apple"></i>
+            <a>Continuar com AppleID</a>
+        </div>
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/8fdfd8f48b.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary: #32d9e5;
+    --second: #0c42d6;
+  }
+
+.div-img{
+    width: 20vw;
+    height: 100vh;
+}
+.div-form{
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url();
+}
