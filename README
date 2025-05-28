@@ -1,0 +1,148 @@
+# Leilão - Sistema de Cotações e Produtos
+
+Este projeto é um sistema web para gerenciamento de cotações, produtos, leilões e perfis de fornecedores, desenvolvido em Flask com SQLAlchemy.
+
+---
+
+## Funcionalidades
+
+- **Autenticação de Usuário:** Cadastro, login, logout e verificação de sessão.
+- **Registro Completo:** Usuário pode completar seu cadastro com dados pessoais e endereço.
+- **Cotações:** Criação, listagem e visualização de cotações.
+- **Produtos:** Cadastro de produtos com upload de imagens principal e adicionais.
+- **Perfil de Fornecedor:** Visualização de estatísticas, produtos, histórico de participações e acessos.
+- **Logs:** Sistema de registro de ações do usuário.
+- **Notificações:** Contador de notificações não lidas.
+- **API:** Endpoint para buscar produtos do usuário autenticado.
+- **Front-end:** Templates HTML com Bootstrap/CSS customizado e JS para interações dinâmicas (ex: modal de envio de proposta).
+
+---
+
+## Estrutura de Pastas
+
+```
+leilao/
+│
+├── app.py                # Arquivo principal da aplicação Flask
+├── models.py             # Definição dos modelos SQLAlchemy
+├── configs.py            # Configurações do banco de dados
+├── static/
+│   ├── css/
+│   │   └── leilao.css    # Estilos customizados
+│   └── js/
+│       ├── leilao.js     # JS para interações de produto/leilão
+│       └── historico.js  # JS para histórico do fornecedor
+├── templates/
+│   ├── perfil/
+│   │   ├── perfilFornecedor.html
+│   │   ├── perfilFornecedorProduto.html
+│   │   └── perfilfornecedorhistorico.html
+│   ├── produto/
+│   │   └── leilao.html
+│   └── ...               # Outros templates
+└── ...
+```
+
+---
+
+## Principais Rotas
+
+- `/`  
+  Página inicial, lista cotações abertas.
+
+- `/login`, `/logout`, `/register`  
+  Autenticação de usuário.
+
+- `/completarRegistro`  
+  Completa o cadastro do usuário.
+
+- `/perfil/<id>`  
+  Exibe o perfil do usuário.
+
+- `/cotacoes/<id>`  
+  Visualiza cotação específica ou cotações do dia.
+
+- `/criarCotacao`  
+  Cria uma nova cotação.
+
+- `/serFornecedor`  
+  Solicita ativação como fornecedor.
+
+- `/perfil/fornecedor/`  
+  Painel do fornecedor (estatísticas, produtos, histórico).
+
+- `/perfil/fornecedor/produto`  
+  Lista produtos do fornecedor.
+
+- `/perfil/fornecedor/cproduto`  
+  Cadastro de novo produto.
+
+- `/perfil/fornecedor/historico`  
+  Histórico de ações do fornecedor.
+
+- `/api/produto/`  
+  API para buscar produtos do usuário autenticado (retorna JSON).
+
+- `/notificacaoCount`  
+  Retorna a quantidade de notificações não lidas (JSON).
+
+---
+
+## Modelos Principais (`models.py`)
+
+- **User:** Usuários do sistema.
+- **cotacao:** Cotações criadas.
+- **produto:** Produtos cadastrados.
+- **lances:** Propostas/lances em cotações.
+- **participacao:** Participações em cotações.
+- **notificacao:** Notificações para usuários.
+- **comentarios:** Comentários e notas (avaliações).
+- **logs:** Registro de ações dos usuários.
+
+Cada modelo pode implementar um método `serialize()` para facilitar a conversão para JSON.
+
+---
+
+## Sistema de Logs
+
+- Toda ação relevante (login, logout, criação de produto/cotação, etc.) é registrada na tabela `logs`.
+- Função utilitária `registrar_log(user_id, action, details=None)` para registrar logs facilmente.
+- Logs podem ser exibidos no painel do usuário.
+
+---
+
+## Front-end
+
+- **CSS:** Estilo azul moderno, responsivo, com modais customizados.
+- **JS:**  
+  - Modal de envio de proposta busca produtos via API ao abrir.
+  - Histórico do fornecedor alterna entre abas com JS.
+  - Exemplo de uso de fetch para popular selects dinamicamente.
+
+---
+
+## Como rodar
+
+1. Instale as dependências (Flask, SQLAlchemy, etc.).
+2. Configure o banco de dados em `configs.py`.
+3. Execute o app:
+   ```
+   python app.py
+   ```
+4. Acesse em [http://localhost:5000](http://localhost:5000)
+
+---
+
+## Observações
+
+- Certifique-se de criar o banco de dados e rodar as migrações antes de usar.
+- O sistema utiliza sessões Flask para autenticação.
+- O upload de arquivos é salvo em `static/uploads/`.
+
+---
+
+## Contribuição
+
+Pull requests são bem-vindos! Abra uma issue para discutir melhorias ou reportar bugs.
+
+---
